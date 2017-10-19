@@ -259,7 +259,7 @@ void BillboardLine::setColor( float r, float g, float b, float a )
   if ( a < 0.9998 )
   {
     material_->getTechnique(0)->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
-    material_->getTechnique(0)->setDepthWriteEnabled( false );
+    material_->getTechnique(0)->setDepthWriteEnabled( true );
   }
   else
   {

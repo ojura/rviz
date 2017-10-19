@@ -117,7 +117,7 @@ void Line::setColor( const Ogre::ColourValue& c )
   if ( c.a < 0.9998 )
   {
     manual_object_material_->getTechnique(0)->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
-    manual_object_material_->getTechnique(0)->setDepthWriteEnabled( false );
+    manual_object_material_->getTechnique(0)->setDepthWriteEnabled( true );
   }
   else
   {
