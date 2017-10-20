@@ -32,6 +32,8 @@
 #include <QWidget>
 #include <QFrame>
 
+#include <OgreGLContext.h>
+
 namespace Ogre
 {
 class RenderWindow;
@@ -48,6 +50,8 @@ public:
   RenderWidget( RenderSystem* render_system, QWidget *parent = 0 );
   virtual ~RenderWidget();
   Ogre::RenderWindow* getRenderWindow() { return render_window_; }
+  Ogre::GLContext* getGLContext() { return gl_context_; }
+
 
 protected:
   virtual void moveEvent(QMoveEvent *e);
@@ -60,6 +64,8 @@ protected:
 
   RenderSystem* render_system_;
   Ogre::RenderWindow* render_window_;
+
+  Ogre::GLContext *gl_context_;
 
   QFrame* renderFrame;
 };

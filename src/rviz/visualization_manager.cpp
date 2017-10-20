@@ -364,6 +364,7 @@ void VisualizationManager::onUpdate()
   {
     render_requested_ = 0;
     boost::mutex::scoped_lock lock(private_->render_mutex_);
+    render_panel_->getGLContext()->setCurrent();
     ogre_root_->renderOneFrame();
   }
 }

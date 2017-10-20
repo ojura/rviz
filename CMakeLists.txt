@@ -44,6 +44,9 @@ else()
   set(ASSIMP_INCLUDE_DIRS)
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} /usr/share/OGRE/cmake/modules)
+find_package(OGRE)
+
 pkg_check_modules(OGRE_OV OGRE OGRE-Overlay)
 
 # Old versions of OGRE (pre 1.9) included OGRE-Overlay in the main package
@@ -181,12 +184,14 @@ catkin_package(
     rviz-extras.cmake
   INCLUDE_DIRS
     src
+    ${OGRE_RenderSystem_GL_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIRS}
     ${OGRE_OV_INCLUDE_DIRS}
     ${OPENGL_INCLUDE_DIR}
   LIBRARIES
     rviz
     ${OGRE_OV_LIBRARIES_ABS}
+    ${OGRE_RenderSystem_GL_LIBRARIES}
     ${rviz_ADDITIONAL_LIBRARIES}
     ${OPENGL_LIBRARIES}
   CATKIN_DEPENDS
@@ -211,6 +216,7 @@ catkin_package(
 include_directories(SYSTEM
   ${EIGEN3_INCLUDE_DIRS}
   ${OGRE_OV_INCLUDE_DIRS}
+  ${OGRE_RenderSystem_GL_INCLUDE_DIRS}
   ${OPENGL_INCLUDE_DIR}
   ${PYTHON_INCLUDE_PATH}
   ${TinyXML_INCLUDE_DIRS}
